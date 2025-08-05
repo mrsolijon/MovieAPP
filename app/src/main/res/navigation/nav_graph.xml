@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="uz.mrsolijon.movieapp.ui.detail.MovieDetailsFragment"
+        android:label="fragment_details_movie"
+        tools:layout="@layout/fragment_movie_details">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_movieDetailsFragment_to_movieTrailerFragment"
+            app:destination="@id/movieTrailerFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="uz.mrsolijon.movieapp.ui.main.MainFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_moviesFragment_to_seeMoreMoviesFragment"
+            app:destination="@id/moviesFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookmarksMovieFragment"
+        android:name="uz.mrsolijon.movieapp.ui.bookmark.BookmarksMovieFragment"
+        android:label="fragment_bookmark_movies"
+        tools:layout="@layout/fragment_movie_bookmarks">
+        <action
+            android:id="@+id/action_bookmarkMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="uz.mrsolijon.movieapp.ui.movies.MoviesFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies">
+        <argument
+            android:name="movieType"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieTrailerFragment"
+        android:name="uz.mrsolijon.movieapp.MovieTrailersFragment"
+        android:label="fragment_movie_trailers"
+        tools:layout="@layout/fragment_movie_trailers">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

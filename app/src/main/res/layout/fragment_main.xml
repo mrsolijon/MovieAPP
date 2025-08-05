@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".ui.MainFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="16dp"
+            app:title="@string/app_name"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/homeToolbarTitleStyle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNowPlayingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_alignStart="@id/toolbar"
+            android:layout_alignTop="@id/btnSeeMoreNowPlaying"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="8dp"
+            android:text="@string/text_now_playing"
+            android:textSize="20sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSeeMoreNowPlaying"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_alignEnd="@id/toolbar"
+            android:fontFamily="@font/poppins_light"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:text="@string/text_see_more"
+            android:textSize="15sp"
+            app:strokeColor="?colorOutlineVariant"
+            app:strokeWidth="0dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNowPlaying"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNowPlayingLabel"
+            android:minHeight="200dp"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingBottom="4dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/btnSeeMoreNowPlaying"
+            tools:listitem="@layout/item_movie_horizontal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTopRatedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvNowPlaying"
+            android:layout_alignStart="@id/toolbar"
+            android:layout_alignTop="@id/btnSeeMoreTopRated"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="8dp"
+            android:text="@string/text_top_rated"
+            android:textSize="20sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSeeMoreTopRated"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvNowPlaying"
+            android:layout_alignEnd="@id/toolbar"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="10dp"
+            android:text="@string/text_see_more"
+            android:textSize="15sp"
+            app:strokeColor="?colorOutlineVariant"
+            app:strokeWidth="0dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTopRated"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnSeeMoreTopRated"
+            android:minHeight="200dp"
+            android:paddingStart="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_movie_vertical" />
+
+        <ProgressBar
+            android:id="@+id/progressBarTopRated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/rvNowPlaying"
+            android:layout_alignBottom="@id/rvNowPlaying"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/progressBarNowPlaying"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/rvTopRated"
+            android:layout_alignBottom="@id/rvTopRated"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/rvNowPlaying" />
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

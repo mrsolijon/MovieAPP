@@ -1,0 +1,32 @@
+package uz.mrsolijon.movieapp.data.local.db.dao
+
+import uz.mrsolijon.movieapp.data.local.db.entity.MovieDetailsEntity
+import uz.mrsolijon.movieapp.data.local.db.entity.MovieEntity
+import androidx.paging.PagingSource
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
+
+@Dao
+interface MovieDao {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMovies(movies: List<MovieEntity>)
+
+    @Query("SELECT * FROM movies_table WHERE movie_type=:movieType LIMIT 20")
+    suspend fun getAllMovies(movieType: String): List<MovieEntity>
+
+    @Query("SELECT * FROM movie_details_table WHERE is_bookmarked=1")
+    fun getBookmarkedMovies(): Flow<List<MovieDetailsEntity>>
+
+    @Query("DELETE FROM movies_table WHERE movie_type=:type")
+    suspend fun clearMoviesByType(type: String)
+
+    @Query("SELECT * FROM movies_table WHERE movie_type=:movieType")
+    fun getAllMoviesByType(movieType: String): PagingSource<Int, MovieEntity>
+
+
+}
