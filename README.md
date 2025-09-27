@@ -1,4 +1,4 @@
-# Movieic
+# MovieAPP
 
 ## Overview
 
